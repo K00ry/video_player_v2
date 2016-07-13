@@ -1,8 +1,6 @@
  /******************* Main Styles ********************/
  
  body {
- 	display: flex;
- 	flex-direction: column;
      font-family: 'Poiret One', cursive;
      color: #222;
      background: #C7DAEC;
@@ -10,9 +8,7 @@
  }
 
  video{
- 	margin: auto;
- 	width: 70%;
- 
+ 	width: 60%
 
  }
  /******************* Main Styles ********************/
