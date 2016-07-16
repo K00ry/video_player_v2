@@ -8,6 +8,12 @@
      background: #C7DAEC;
      width: 100%;
  }
+ .video-container{
+ 	display: flex;
+ 	flex-direction: column;
+
+
+ }
 
  video{
  	margin: auto;
