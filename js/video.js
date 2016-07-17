@@ -1,13 +1,16 @@
 $(document).ready(function() {
 
 
+
+
     var video = document.getElementById("video");
     var progress = document.getElementById("progress-bar");
-    var buffer = document.getElementById("buffer-bar");
+    var bar = document.getElementById("bar");
+    var $buffer = $("#buffer-bar");
     var v_controls = document.getElementById("video-controls");
     var left_controls = document.getElementById("left-controls");
     var $play_pause = $("#play-pause");
-    var $play_img = $(".play_pause");
+    var $play_img = $(".play-pause");
     var time_display = document.getElementById("time-display");
     var current_time = document.getElementById("current-time");
     var duration = document.getElementById("duration");
@@ -20,18 +23,78 @@ $(document).ready(function() {
     var $full_screen = $("#full-screen");
 
 
+    /////// utilities variables \\\\\\\\
 
- 
+
+    var floor = Math.floor(video.duration);
+
+
+
+
+
 
     $play_pause.click(function() {
-        if (video.paused === true) {
+        if (video.paused) {
             video.play();
-            $play_img.attr('src','icons/play-icon.png'); 
+            $play_img.attr('src', 'icons/pause-icon.png');
         } else {
             video.pause();
-            $play_img.attr('src','icons/pause-icon.png');
+            $play_img.attr('src', 'icons/play-icon.png');
         }
     });
+
+
+        
+
+    // format time Function \\
+
+    function formatTime(seconds) {
+        seconds = Math.round(seconds);
+        minutes = Math.floor(seconds / 60);
+        minutes = (minutes >= 10) ? minutes : "0" + minutes;
+        seconds = Math.floor(seconds % 60);
+        seconds = (seconds >= 10) ? seconds : "0" + seconds;
+        return minutes + ":" + seconds;
+    }
+
+    
+
+
+    //////////// Progress Bars \\\\\\\\\\\\\
+
+    video.addEventListener('loadedmetadata', function() {
+        progress.setAttribute('max', video.duration);
+    });
+
+    video.addEventListener('timeupdate', function() {
+        progress.value = video.currentTime;
+        bar.style.width = Math.floor((video.currentTime / video.duration) * 100) + '%';
+        current_time.innerHTML =formatTime(video.currentTime);
+
+        var buffer_value = (100 / video.duration) * video.buffered.end(0);
+        $buffer.val(buffer_value);
+    });
+
+    // skiping \\
+
+    progress.addEventListener('click', function(e) {
+        var pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
+        video.currentTime = pos * video.duration;
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $full_screen.click(function() {
         if (video.requestFullscreen) {
@@ -104,9 +167,11 @@ $(document).ready(function() {
 
 
 
+var jasem = video.buffered.length;
+
+	console.log(jasem);
 
 
-    console.log(video.textTracks);
 
 
 
