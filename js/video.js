@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     var video = document.getElementById("video");
     var progress = document.getElementById("progress-bar");
-    var bar = document.getElementById("bar");
+    
     var $buffer = $("#buffer-bar");
     var v_controls = document.getElementById("video-controls");
     var left_controls = document.getElementById("left-controls");
@@ -60,16 +60,18 @@ $(document).ready(function() {
     
 
 
-    //////////// Progress Bars \\\\\\\\\\\\\
+    //////////// Progress & Buffer Bars + Time Display \\\\\\\\\\\\\
 
     video.addEventListener('loadedmetadata', function() {
-        progress.setAttribute('max', video.duration);
+        progress.setAttribute('max', floor);
+        
     });
 
     video.addEventListener('timeupdate', function() {
         progress.value = video.currentTime;
-        bar.style.width = Math.floor((video.currentTime / video.duration) * 100) + '%';
+        
         current_time.innerHTML =formatTime(video.currentTime);
+        duration.innerHTML = formatTime(video.duration);
 
         var buffer_value = (100 / video.duration) * video.buffered.end(0);
         $buffer.val(buffer_value);
@@ -94,7 +96,7 @@ $(document).ready(function() {
 
 
 
-
+    /////////// Full Screen click event \\\\\\\\\\
 
     $full_screen.click(function() {
         if (video.requestFullscreen) {
@@ -107,7 +109,7 @@ $(document).ready(function() {
 
     });
 
-    // Caption button click event
+    /////////// Caption button click event \\\\\\\\\\
     $cc.click(function() {
         if (video.textTracks[0].mode == "showing") {
             // Turn off captions
@@ -167,9 +169,7 @@ $(document).ready(function() {
 
 
 
-var jasem = video.buffered.length;
 
-	console.log(jasem);
 
 
 
