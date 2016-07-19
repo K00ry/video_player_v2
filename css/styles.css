@@ -1,65 +1,77 @@
- /******************* Main Styles ********************/
- 
- body {
- 	display: flex;
- 	flex-direction: column;
- 	font-size: 1em;
-     font-family: 'Poiret One', cursive;
-     color: #222;
-     background: #C7DAEC;
-     width: 100%;
- }
- .video-container{
- 	display: flex;
- 	flex-direction: column;
+/******************* Main Styles ********************/
 
+body {
+    font-size: 1em;
+    font-family: 'Poiret One', cursive;
+    color: #222;
+    background: #C7DAEC;
+}
 
- }
+#video-container {
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
 
- video{
- 	margin: auto;
- 	width: 90%;
- 	
- }
+video {
+    width: 100%;
+}
 
+button {
+    background: transparent;
+    border: none;
+    display: inline;
+    color: white;
+}
+button:active,
+button:focus{
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+p{
+	width: 80%;
+	margin: 0 auto;
+	font-weight: bold;
 
-
-
- #video-controls,
- #left-controls,
- #right_controls{
- 	display:flex;
- }
-
- #video-controls{
- 	margin: auto;
- 	width: 90%;
- 	justify-content: space-between;
-
- }
-
-
-
-
-
- /******************* Ziiing ********************/
-
-
-#video-controls {
-	display: none;
-	transition: all 0.3s ease-in;
-	position: absolute;
-	background: rgba(0, 0, 0, 0.3);
-	/*background: rgba(0, 0, 0, 1);*/
-	color: #fff;
-	width: 100%;
-	height: 33px;
 }
 
 
+/******************* Main Styles ********************/
 
+#video-container:hover #video-controls,
+#video-container:hover progress {
+    opacity: 1;
+    -webkit-transform: translate(0px, -45px);
+    -moz-transform: translate(0px, -45px);
+    -ms-transform: translate(0px, -45px);
+    -o-transform: translate(0px, -45px);
+    transform: translate(0px, -45px);
+}
 
+#video-controls {
+    width: 100%;
+    opacity: 0;
+}
 
+#left-controls,
+#right-controls {
+    margin-top: 10px;
+}
+
+#left-controls {
+    float: left;
+}
+
+#right-controls {
+    float: right;
+}
+
+#video-controls {
+    transition: all .3s ease-out;
+}
 
 #volume-bar,
 #play-pause,
@@ -68,85 +80,81 @@
 #closed-caption,
 #mute,
 #full-screen {
-	vertical-align: middle;
+    vertical-align: middle;
+}
+#time-display{
+		color: white;
+		font-size: 0.8em;
 }
 
-#play-pause {
-	margin-left: 5px;
-}
 
+/******************* Progress Bar Styles ********************/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- progress[value] {
-	cursor: pointer;
-
-	/* Reset the default appearance */
-	-webkit-appearance: none;
+progress {
+    -webkit-appearance: none;
     -moz-appearance: none;
-	height: 10px;
-
-	/* Get rid of default border in Firefox. */
-	border: none;
-
-}
- .video-container:hover #video-controls {
- 	display: flex;
-	opacity: .9;
-	transform: translateY(-39px);
-	-webkit-transform: translateY(-39px);
-    -o-transform: translateY(-39px); 
-    -moz-transform: translateY(-39px);
-    -ms-transform: translateY(-39px);
+    border: none;
+    position: absolute;
+    width: 100%;
+    bottom: 38px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    transition: all 0.2s ease-in;
 }
 
-
-/* the container */
-progress[value]::-webkit-progress-bar {
-	border-radius: 0px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
-	background-color: rgba(255, 255, 255, 0.15);
+progress[value] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 10px;
+    border: none;
 }
 
-#progress-bar,
-#buffer-bar {
-	width: 90%;
-	margin-right: 20px;
-	transition: all 0.3s ease-in;
-	position: absolute;
-	
-	right: 109px;
-	bottom: 10px;
+#progress-bar::-webkit-progress-bar,
+#buffer-bar::-webkit-progress-bar {
+    background-color: rgba(231, 230, 230, 0.1);
 }
-#buffer-bar {
-	z-index: 1;
+
+#progress-bar::-webkit-progress-value {
+    background-color: purple;
+}
+
+#buffer-bar::-webkit-progress-value {
+    background-color: rgba(180, 0, 180, .5);
+}
+
+#buffer-bar::-moz-progress-bar {
+    background-color: rgba(255, 255, 255, .5);
+    height: 3px;
+}
+
+#progress-bar::-moz-progress-bar {
+    background-color: purple;
+    height: 3px;
 }
 
 #progress-bar {
-	z-index: 2;
-}
-
-#video-container:hover #progress-bar,
-#video-container:hover #buffer-bar {
-	transform: translateY(-33px);
-	-webkit-transform: translateY(-33px);
-    -o-transform: translateY(-33px); 
-    -moz-transform: translateY(-33px);
-    -ms-transform: translateY(-33px);
+    z-index: 1;
 }
 
 
+/******************* Progress Bar Styles ********************/
 
- 
+
+
+
+.active { 
+        color: purple;
+        transition: all .6s ease-in-out;
+    }
+    
+    .inactive {
+        color: #645f5f;
+        transition: all .6s ease-in-out;
+    }
+
+    #text-transcript span {
+        cursor: pointer;
+    }
+

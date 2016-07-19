@@ -1,0 +1,64 @@
+ *, *::after, *:before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9em;
+    line-height: 1.75;
+    color: #645f5f;
+}
+
+p {
+    margin: .75em 1.5em;
+}
+
+video {
+    width: 100%;
+}
+
+#video-container {
+	position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#video-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 10px;
+    padding: 10px 15px 0;
+    background: transparent;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#video-container:hover #video-controls { /*Show controls on hover*/
+    opacity: 1;
+    -webkit-transform: translate(0,-65px);
+    -o-transform: translate(0,-65px); 
+    -moz-transform: translate(0,-65px);
+    -ms-transform: translate(0,-65px);
+        transform: translate(0,-65px);
+}
+
+ progress[value] { /*had to do a reset on this element for FF to work properly*/
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 3px;
+        border: none;
+        background-color: rgba(231, 230, 230, 0.1);
+    }
+
+     #progress-bar,
+    #buffer-bar {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 97%;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transition: all 0.5s ease-in-out;
+    }
