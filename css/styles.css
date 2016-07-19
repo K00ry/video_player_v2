@@ -3,6 +3,7 @@
  body {
  	display: flex;
  	flex-direction: column;
+ 	font-size: 1em;
      font-family: 'Poiret One', cursive;
      color: #222;
      background: #C7DAEC;
@@ -17,14 +18,135 @@
 
  video{
  	margin: auto;
- 	width: 70%;
- 
+ 	width: 90%;
+ 	
+ }
+
+
+
+
+ #video-controls,
+ #left-controls,
+ #right_controls{
+ 	display:flex;
+ }
+
+ #video-controls{
+ 	margin: auto;
+ 	width: 90%;
+ 	justify-content: space-between;
 
  }
- /******************* Main Styles ********************/
-#bar {
 
-		
-		background-color:red;
+
+
+
+
+ /******************* Ziiing ********************/
+
+
+#video-controls {
+	display: none;
+	transition: all 0.3s ease-in;
+	position: absolute;
+	background: rgba(0, 0, 0, 0.3);
+	/*background: rgba(0, 0, 0, 1);*/
+	color: #fff;
+	width: 100%;
+	height: 33px;
+}
+
+
+
+
+
+
+#volume-bar,
+#play-pause,
+#time-display,
+#playback-speed,
+#closed-caption,
+#mute,
+#full-screen {
+	vertical-align: middle;
+}
+
+#play-pause {
+	margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ progress[value] {
+	cursor: pointer;
+
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	height: 10px;
+
+	/* Get rid of default border in Firefox. */
+	border: none;
 
 }
+ .video-container:hover #video-controls {
+ 	display: flex;
+	opacity: .9;
+	transform: translateY(-39px);
+	-webkit-transform: translateY(-39px);
+    -o-transform: translateY(-39px); 
+    -moz-transform: translateY(-39px);
+    -ms-transform: translateY(-39px);
+}
+
+
+/* the container */
+progress[value]::-webkit-progress-bar {
+	border-radius: 0px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+#progress-bar,
+#buffer-bar {
+	width: 90%;
+	margin-right: 20px;
+	transition: all 0.3s ease-in;
+	position: absolute;
+	
+	right: 109px;
+	bottom: 10px;
+}
+#buffer-bar {
+	z-index: 1;
+}
+
+#progress-bar {
+	z-index: 2;
+}
+
+#video-container:hover #progress-bar,
+#video-container:hover #buffer-bar {
+	transform: translateY(-33px);
+	-webkit-transform: translateY(-33px);
+    -o-transform: translateY(-33px); 
+    -moz-transform: translateY(-33px);
+    -ms-transform: translateY(-33px);
+}
+
+
+
+ 
