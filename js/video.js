@@ -5,20 +5,15 @@ $(document).ready(function() {
 
     var video = document.getElementById("video");
     var progress = document.getElementById("progress-bar");
-
     var $buffer = $("#buffer-bar");
-    var v_controls = document.getElementById("video-controls");
-    var left_controls = document.getElementById("left-controls");
     var $play_pause = $("#play-pause");
     var $play_img = $(".play-pause");
-    var time_display = document.getElementById("time-display");
     var current_time = document.getElementById("current-time");
     var duration = document.getElementById("duration");
-    var right_controls = document.getElementById("right-controls");
     var $speed = $("#playback-speed");
     var $cc = $("#closed-caption");
     var $mute = $("#mute");
-    var $mute_img = $('.mute')
+    var $mute_img = $('.mute');
     var $volume_bar = $("#volume-bar");
     var $full_screen = $("#full-screen");
     var textTranscript = document.getElementById("text-transcript");
@@ -75,23 +70,23 @@ $(document).ready(function() {
         video.play();
     }
 
-     var sentences = textTranscript.getElementsByTagName('span');
-            for (var i = 0; i < sentences.length; i++) {
-                sentences[i].addEventListener("click", textJump); //Call textJump function
-            }
+    var sentences = textTranscript.getElementsByTagName('span');
+    for (var i = 0; i < sentences.length; i++) {
+        sentences[i].addEventListener("click", textJump); //Call textJump function
+    }
 
-             //Event listener for text transcript highlight changes
-        video.addEventListener("timeupdate", function(e) {
-            syncData.forEach(function(element, index, array){
-                if( video.currentTime >= element.start && video.currentTime <= element.end )
-                    textTranscript.children[index].classList.remove("inactive");
-                    textTranscript.children[index].classList.add("active");
-                    if (video.currentTime < element.start || video.currentTime > element.end) {
-                        textTranscript.children[index].classList.remove("active");
-                        textTranscript.children[index].classList.add("inactive");  
-                    } 
-            });
+    //Event listener for text transcript highlight changes
+    video.addEventListener("timeupdate", function(e) {
+        syncData.forEach(function(element, index, array) {
+            if (video.currentTime >= element.start && video.currentTime <= element.end)
+                textTranscript.children[index].classList.remove("inactive");
+            textTranscript.children[index].classList.add("active");
+            if (video.currentTime < element.start || video.currentTime > element.end) {
+                textTranscript.children[index].classList.remove("active");
+                textTranscript.children[index].classList.add("inactive");
+            }
         });
+    });
 
 
 
@@ -116,7 +111,7 @@ $(document).ready(function() {
 
 
 
-    
+
 
 
 
@@ -147,9 +142,17 @@ $(document).ready(function() {
 
     // skiping \\
 
+    var videoSeek = function(clickValue) {
+        video.currentTime = clickValue / 100 * video.duration;
+        if (video.paused) {
+            video.play();
+
+        }
+    };
+    
     progress.addEventListener('click', function(e) {
-        var pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
-        video.currentTime = pos * video.duration;
+        var clickValue = Math.round(e.offsetX / this.offsetWidth * 100);
+        videoSeek(clickValue);
     });
 
 
