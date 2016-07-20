@@ -1,7 +1,3 @@
-$(document).ready(function() {
-
-
-
 
     var video = document.getElementById("video");
     var progress = document.getElementById("progress-bar");
@@ -21,7 +17,8 @@ $(document).ready(function() {
     /////// utilitie variables \\\\\\\\
 
 
-    var floor = Math.floor(video.duration);
+
+  
 
 
     //JSON for cue start/end times & text
@@ -118,12 +115,12 @@ $(document).ready(function() {
 
     //////////// Progress & Buffer Bars + Time Display \\\\\\\\\\\\\
 
-    video.addEventListener('loadedmetadata', function() {
-        progress.setAttribute('max', floor);
-
-    });
+   
 
     video.addEventListener('timeupdate', function() {
+
+        progress.setAttribute('max', video.duration);
+       // set the max attr for progress bar
         progress.value = video.currentTime;
 
         current_time.innerHTML = formatTime(video.currentTime);
@@ -246,4 +243,3 @@ $(document).ready(function() {
 
 
 
-});
