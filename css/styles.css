@@ -1,7 +1,7 @@
 /******************* Main Styles ********************/
 
 body {
-    font-size: 1em;
+    font-size: 0.8em;
     font-family: 'Poiret One', cursive;
     color: #222;
     background: #C7DAEC;
@@ -24,26 +24,36 @@ button {
     display: inline;
     color: white;
 }
+
 button:active,
-button:focus{
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-p{
-	width: 80%;
-	margin: 0 auto;
-	font-weight: bold;
-
+button:focus {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
+p {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: bold;
+    line-height: 1.5;
+}
 
-/******************* Main Styles ********************/
 
-#video-container:hover #video-controls,
-#video-container:hover progress {
+/******************* Video Controls Styles ********************/
+
+#video-container:hover #video-controls {
     opacity: 1;
+    -webkit-transform: translate(0px, -45px);
+    -moz-transform: translate(0px, -45px);
+    -ms-transform: translate(0px, -45px);
+    -o-transform: translate(0px, -45px);
+    transform: translate(0px, -45px);
+}
+
+#video-container:hover progress {
     -webkit-transform: translate(0px, -45px);
     -moz-transform: translate(0px, -45px);
     -ms-transform: translate(0px, -45px);
@@ -56,17 +66,14 @@ p{
     opacity: 0;
 }
 
-#left-controls,
-#right-controls {
-    margin-top: 10px;
-}
-
 #left-controls {
     float: left;
+    display: flex;
 }
 
 #right-controls {
     float: right;
+    display: flex;
 }
 
 #video-controls {
@@ -80,26 +87,33 @@ p{
 #closed-caption,
 #mute,
 #full-screen {
-    vertical-align: middle;
+    line-height: 3;
 }
-#time-display{
-		color: white;
-		font-size: 0.8em;
+
+#volume-bar {
+    align-self: center;
+}
+
+#time-display {
+    color: white;
+    font-size: 0.8em;
+    vertical-align: middle;
 }
 
 
 /******************* Progress Bar Styles ********************/
 
 progress {
+    display: block;
     -webkit-appearance: none;
     -moz-appearance: none;
     border: none;
     position: absolute;
     width: 100%;
-    bottom: 38px;
+    bottom: 47px;
     left: 0;
     right: 0;
-    margin: 0;
+    margin: 0 auto;
     transition: all 0.2s ease-in;
 }
 
@@ -120,41 +134,95 @@ progress[value] {
     background-color: purple;
 }
 
+#progress-bar::-moz-progress-bar {
+    background-color: purple;
+    height: 3px;
+}
+
 #buffer-bar::-webkit-progress-value {
     background-color: rgba(180, 0, 180, .5);
 }
 
 #buffer-bar::-moz-progress-bar {
     background-color: rgba(255, 255, 255, .5);
-    height: 3px;
 }
 
-#progress-bar::-moz-progress-bar {
+input[type=range]::-moz-range-progress {
     background-color: purple;
-    height: 3px;
+}
+
+input[type=range]:focus {
+    outline: none;
 }
 
 #progress-bar {
-    z-index: 1;
+    z-index: 2;
 }
 
 
-/******************* Progress Bar Styles ********************/
+/******************* transcript Styles ********************/
+
+.active {
+    color: purple;
+    transition: all .6s ease-in-out;
+}
+
+.inactive {
+    color: #645f5f;
+    transition: all .6s ease-in-out;
+}
+
+#text-transcript span {
+    cursor: pointer;
+}
+
+#volume-bar,
+#mute,
+#full-screen {
+    display: none;
+}
 
 
+/******************* media queries  ********************/
 
-
-.active { 
-        color: purple;
-        transition: all .6s ease-in-out;
+@media screen and (min-width: 550px) {
+    /*Smaller size in general*/
+    body {
+        font-size: 1em;
     }
-    
-    .inactive {
-        color: #645f5f;
-        transition: all .6s ease-in-out;
+    #video-controls {
+        display: flex;
+        justify-content: space-between;
     }
-
-    #text-transcript span {
-        cursor: pointer;
+    #right-controls {
+        display: flex;
     }
-
+    #video-container:hover #video-controls {
+        opacity: .9;
+        transform: translateY(-42px);
+        -webkit-transform: translateY(-42px);
+        -o-transform: translateY(-42px);
+        -moz-transform: translateY(-42px);
+        -ms-transform: translateY(-42px);
+    }
+    #progress-bar,
+    #buffer-bar {
+        bottom: 42px;
+    }
+    #volume-bar,
+    #mute,
+    #full-screen {
+        display: block;
+    }
+    #volume-bar,
+    #play-pause,
+    #playback-speed,
+    #closed-caption,
+    #mute,
+    #full-screen {
+        line-height: 0;
+    }
+    #time-display {
+        line-height: 3;
+    }
+}
