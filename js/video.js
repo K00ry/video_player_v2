@@ -13,6 +13,7 @@
     var $volume_bar = $("#volume-bar");
     var $full_screen = $("#full-screen");
     var textTranscript = document.getElementById("text-transcript");
+    var minutes;
 
     /////// utilitie variables \\\\\\\\
 
@@ -118,14 +119,14 @@
    
 
     video.addEventListener('timeupdate', function() {
-
+    	// set the max attr for progress bar
         progress.setAttribute('max', video.duration);
-       // set the max attr for progress bar
+       // set the timer
         progress.value = video.currentTime;
 
         current_time.innerHTML = formatTime(video.currentTime);
         duration.innerHTML = formatTime(video.duration);
-
+        // set the buffer progress 
         var buffer_value = (100 / video.duration) * video.buffered.end(0);
         $buffer.val(buffer_value);
 
