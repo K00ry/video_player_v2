@@ -2,7 +2,7 @@
     var video = document.getElementById("video");
     var progress = document.getElementById("progress-bar");
     var $buffer = $("#buffer-bar");
-    var $play_pause = $("#play-pause");
+    var $play_pause = $("#video,#play-pause");
     var $play_img = $(".play-pause");
     var current_time = document.getElementById("current-time");
     var duration = document.getElementById("duration");
