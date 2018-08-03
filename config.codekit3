@@ -7,8 +7,15 @@
 		"uuidString": "BB47EDF5-1412-4328-8CDE-D6CD8B8FD222"
 		}
 	],
-"creatorBuild": "26680",
+"creatorBuild": "26330",
 "files": {
+	"\/.gitignore": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/.gitignore",
+		"oF": 0
+		},
 	"\/css\/koory-normalize.css": {
 		"aP": 1,
 		"bl": 0,
@@ -16,6 +23,16 @@
 		"ma": 0,
 		"oA": 0,
 		"oAP": "\/css\/koory-normalize-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/css\/styles-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/css\/styles-min-min.css",
 		"oF": 0,
 		"oS": 3
 		},
@@ -101,6 +118,16 @@
 		"oAP": "\/index.html",
 		"oF": 0
 		},
+	"\/js\/video-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/js\/video-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"\/js\/video.js": {
 		"ft": 64,
 		"ma": 0,
@@ -181,8 +208,7 @@
 	"creationDate": 554520782,
 	"displayValue": "video_player_v2",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "meme-girlfriend",
-	"iconImageWasSetByUser": 0
+	"iconImageName": "meme-girlfriend"
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -1985,7 +2011,6 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {

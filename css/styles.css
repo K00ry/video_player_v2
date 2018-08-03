@@ -192,6 +192,8 @@ input[type=range]:focus {
     body {
         font-size: 1em;
     }
+
+
     #video-controls {
         display: flex;
         justify-content: space-between;
